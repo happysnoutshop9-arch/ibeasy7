@@ -243,42 +243,136 @@ img   { max-width: 100%; display: block; }
 }
 .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-/* --- Visual / Jellyfish --- */
+/* --- Hero background dot-grid overlay --- */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(133, 183, 235, 0.13) 1px, transparent 1px);
+  background-size: 28px 28px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --- Achievement cards (hero-visual right side) --- */
 .hero-visual {
-  flex: 0 0 300px;
+  flex: 0 0 320px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
-.jellyfish-wrap {
-  animation: jellyFloat 3.8s ease-in-out infinite;
-  filter: drop-shadow(0 14px 42px rgba(133, 183, 235, 0.55));
-}
-@keyframes jellyFloat {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-20px); }
-}
-.jellyfish-svg { width: 250px; height: auto; }
 
-/* Tentacle seaweed sway — each <g> rotates around its own top */
-.tentacle {
-  transform-box: fill-box;
-  transform-origin: 50% 0%;
-  animation: tentacleSway ease-in-out infinite;
+.score-cluster {
+  position: relative;
+  width: 310px;
+  height: 350px;
 }
-@keyframes tentacleSway {
-  0%, 100% { transform: rotate(0deg); }
-  30%       { transform: rotate(7deg); }
-  70%       { transform: rotate(-7deg); }
+
+.pro-card {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  padding: 1.2rem 1.5rem;
+  color: var(--white);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
 }
-.t1 { animation-duration: 2.8s; animation-delay:  0.0s; }
-.t2 { animation-duration: 3.3s; animation-delay: -0.8s; }
-.t3 { animation-duration: 2.9s; animation-delay: -1.5s; }
-.t4 { animation-duration: 3.7s; animation-delay: -0.3s; }
-.t5 { animation-duration: 3.1s; animation-delay: -1.1s; }
-.t6 { animation-duration: 2.6s; animation-delay: -0.5s; }
-.t7 { animation-duration: 3.4s; animation-delay: -1.8s; }
+
+/* Main diploma card — top right */
+.card-main {
+  top: 0; right: 0;
+  width: 240px;
+  animation: cardFloat 4.8s ease-in-out infinite;
+}
+/* IA card — middle left, overlapping */
+.card-ia {
+  top: 148px; left: 0;
+  width: 228px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  animation: cardFloat 5.6s ease-in-out infinite;
+  animation-delay: -1.4s;
+}
+/* EE card — bottom right */
+.card-ee {
+  bottom: 0; right: 12px;
+  width: 198px;
+  animation: cardFloat 4.2s ease-in-out infinite;
+  animation-delay: -2.8s;
+}
+
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-9px); }
+}
+
+/* Card inner elements */
+.pc-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.58;
+  margin: 0 0 0.4rem;
+}
+.pc-score-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.1rem;
+  margin-bottom: 0.85rem;
+}
+.pc-num {
+  font-family: var(--font-serif);
+  font-size: 2.9rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--sky-blue);
+}
+.pc-denom { font-size: 1rem; opacity: 0.55; }
+
+.subj-pills { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.subj-pill {
+  font-size: 0.68rem;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50px;
+  padding: 0.18rem 0.55rem;
+  white-space: nowrap;
+}
+.subj-pill b { color: var(--mint-green); font-weight: 700; }
+
+.pc-check {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(29, 158, 117, 0.22);
+  border: 1px solid rgba(29, 158, 117, 0.45);
+  color: var(--mint-green);
+  font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.pc-detail {
+  font-size: 0.82rem;
+  opacity: 0.82;
+  margin: 0;
+}
+.pc-detail b { color: var(--mint-green); }
+
+.pc-ee-score {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0.15rem 0 0;
+  letter-spacing: 0.02em;
+}
+.pc-bonus {
+  color: var(--mint-green);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
 
 /* --- Bubbles --- */
 .bubbles {
@@ -654,8 +748,7 @@ img   { max-width: 100%; display: block; }
   .hero-text { max-width: 100%; }
   .hero-sub { margin: 0 auto 2rem; }
   .hero-ctas { justify-content: center; }
-  .hero-visual { flex: 0 0 auto; }
-  .jellyfish-svg { width: 170px; }
+  .hero-visual { display: none; }
 
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }

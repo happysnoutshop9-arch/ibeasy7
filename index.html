@@ -61,132 +61,41 @@
         </div>
       </div>
 
-      <!-- Jellyfish visual -->
+      <!-- Professional achievement cards -->
       <div class="hero-visual" aria-hidden="true">
-        <div class="jellyfish-wrap">
-          <svg class="jellyfish-svg" viewBox="0 0 280 405" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <!-- Outer body gradient: subtle blue disc -->
-              <radialGradient id="outerGrad" cx="50%" cy="58%" r="52%">
-                <stop offset="0%"   stop-color="#cfe4f7" stop-opacity="0.72"/>
-                <stop offset="75%"  stop-color="#9dc5ec" stop-opacity="0.55"/>
-                <stop offset="100%" stop-color="#6aaae0" stop-opacity="0.35"/>
-              </radialGradient>
-              <!-- Inner dome gradient: bright jelly -->
-              <radialGradient id="domeGrad" cx="42%" cy="38%" r="60%">
-                <stop offset="0%"   stop-color="#f0f8ff" stop-opacity="0.97"/>
-                <stop offset="50%"  stop-color="#d8edfa" stop-opacity="0.90"/>
-                <stop offset="100%" stop-color="#a4c8ec" stop-opacity="0.75"/>
-              </radialGradient>
-              <!-- Inner window: brightest white centre -->
-              <radialGradient id="windowGrad" cx="44%" cy="38%" r="58%">
-                <stop offset="0%"   stop-color="#f8fcff" stop-opacity="0.95"/>
-                <stop offset="100%" stop-color="#d5e9f8" stop-opacity="0.75"/>
-              </radialGradient>
-              <!-- Soft ambient glow filter -->
-              <filter id="jGlow" x="-18%" y="-18%" width="136%" height="136%">
-                <feGaussianBlur stdDeviation="5" result="b"/>
-                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-            </defs>
+        <div class="score-cluster">
 
-            <!-- ── OUTER RIM / DISC ── -->
-            <ellipse cx="140" cy="168" rx="130" ry="105"
-                     fill="url(#outerGrad)"
-                     stroke="rgba(133,183,235,0.55)" stroke-width="2.5"
-                     filter="url(#jGlow)"/>
+          <!-- Main diploma score card -->
+          <div class="pro-card card-main">
+            <p class="pc-eyebrow">IB Diploma Score</p>
+            <div class="pc-score-row">
+              <span class="pc-num">43</span><span class="pc-denom">&thinsp;/ 45</span>
+            </div>
+            <div class="subj-pills">
+              <span class="subj-pill">Bio HL <b>7</b></span>
+              <span class="subj-pill">Chem HL <b>7</b></span>
+              <span class="subj-pill">Math HL <b>7</b></span>
+              <span class="subj-pill">Chi A HL <b>7</b></span>
+              <span class="subj-pill">Econ SL <b>7</b></span>
+              <span class="subj-pill">Eng B SL <b>6</b></span>
+            </div>
+          </div>
 
-            <!-- ── INNER DOME ── -->
-            <ellipse cx="140" cy="157" rx="102" ry="91"
-                     fill="url(#domeGrad)"
-                     stroke="rgba(133,183,235,0.30)" stroke-width="1.5"/>
+          <!-- IA result card -->
+          <div class="pro-card card-ia">
+            <div class="pc-check">&#10003;</div>
+            <div>
+              <p class="pc-eyebrow">Internal Assessment</p>
+              <p class="pc-detail">Chemistry HL &middot; Band&nbsp;<b>7</b></p>
+            </div>
+          </div>
 
-            <!-- ── INNER DOME WINDOW (brightest centre) ── -->
-            <ellipse cx="140" cy="140" rx="68" ry="57"
-                     fill="url(#windowGrad)"/>
+          <!-- EE + TOK card -->
+          <div class="pro-card card-ee">
+            <p class="pc-eyebrow">EE &amp; TOK Core</p>
+            <p class="pc-ee-score">A &thinsp;+&thinsp; A &nbsp;<span class="pc-bonus">+3 pts</span></p>
+          </div>
 
-            <!-- ── WHITE WAVE STRIPE (inner top pattern) ── -->
-            <path d="M 92,110 Q 110,98 126,110 Q 142,122 158,110 Q 174,98 188,110"
-                  stroke="rgba(255,255,255,0.80)" stroke-width="3.5"
-                  fill="none" stroke-linecap="round"/>
-
-            <!-- ── GLOSSY HIGHLIGHTS ── -->
-            <!-- Main highlight (top-left) -->
-            <ellipse cx="105" cy="122" rx="32" ry="20"
-                     fill="rgba(255,255,255,0.55)"
-                     transform="rotate(-28 105 122)"/>
-            <!-- Secondary highlight (right) -->
-            <ellipse cx="172" cy="138" rx="15" ry="9"
-                     fill="rgba(255,255,255,0.34)"
-                     transform="rotate(14 172 138)"/>
-
-            <!-- ── FACE: >v< expression ── -->
-            <!-- Left eye  > -->
-            <polyline points="88,163  105,172  88,181"
-                      stroke="#4a6fa5" stroke-width="4.5"
-                      fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- Centre  v  -->
-            <polyline points="124,165  140,178  156,165"
-                      stroke="#4a6fa5" stroke-width="4.5"
-                      fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- Right eye  < -->
-            <polyline points="192,163  175,172  192,181"
-                      stroke="#4a6fa5" stroke-width="4.5"
-                      fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-
-            <!-- ── BLUSH ── -->
-            <ellipse cx="66"  cy="181" rx="18" ry="12" fill="rgba(255,145,145,0.28)"/>
-            <ellipse cx="214" cy="181" rx="18" ry="12" fill="rgba(255,145,145,0.28)"/>
-
-            <!-- ── FRILL / CLOUD SKIRT ── -->
-            <!-- Filled scallop base -->
-            <path d="M 16,222
-                     Q 32,204 50,224 Q 66,242 84,222
-                     Q 100,204 118,224 Q 134,242 140,222
-                     Q 146,204 162,224 Q 180,242 196,222
-                     Q 212,204 230,224 Q 246,242 264,222
-                     L 264,246 Q 140,256 16,246 Z"
-                  fill="rgba(181,212,244,0.50)"
-                  stroke="rgba(133,183,235,0.62)" stroke-width="2.2"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-
-            <!-- ── TENTACLES (7, individually animated) ── -->
-            <g class="tentacle t1">
-              <path d="M 50,240 C 40,264 58,282 44,308 C 32,330 50,350 38,376"
-                    stroke="rgba(133,183,235,0.70)" stroke-width="2.4"
-                    fill="none" stroke-linecap="round"/>
-            </g>
-            <g class="tentacle t2">
-              <path d="M 82,248 C 72,274 90,292 76,320 C 64,344 82,364 70,392"
-                    stroke="rgba(181,212,244,0.85)" stroke-width="2.9"
-                    fill="none" stroke-linecap="round"/>
-            </g>
-            <g class="tentacle t3">
-              <path d="M 112,252 C 100,280 120,298 106,328 C 94,353 113,373 100,400"
-                    stroke="rgba(133,183,235,0.88)" stroke-width="3.4"
-                    fill="none" stroke-linecap="round"/>
-            </g>
-            <g class="tentacle t4">
-              <path d="M 140,254 C 128,283 148,302 134,332 C 122,357 141,378 128,405"
-                    stroke="rgba(181,212,244,0.95)" stroke-width="3.8"
-                    fill="none" stroke-linecap="round"/>
-            </g>
-            <g class="tentacle t5">
-              <path d="M 168,252 C 180,280 160,298 174,328 C 186,353 167,373 180,400"
-                    stroke="rgba(133,183,235,0.88)" stroke-width="3.4"
-                    fill="none" stroke-linecap="round"/>
-            </g>
-            <g class="tentacle t6">
-              <path d="M 198,248 C 208,274 190,292 204,320 C 216,344 198,364 210,392"
-                    stroke="rgba(181,212,244,0.85)" stroke-width="2.9"
-                    fill="none" stroke-linecap="round"/>
-            </g>
-            <g class="tentacle t7">
-              <path d="M 230,240 C 240,264 222,282 236,308 C 248,330 230,350 242,376"
-                    stroke="rgba(133,183,235,0.70)" stroke-width="2.4"
-                    fill="none" stroke-linecap="round"/>
-            </g>
-          </svg>
         </div>
       </div>
     </div>
