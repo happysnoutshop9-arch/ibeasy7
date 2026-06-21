@@ -269,36 +269,45 @@
       });
     });
 
-    function copyEmail() {
-      const addr = document.getElementById('email-addr').textContent.trim();
-      const btn  = document.getElementById('copy-email');
-      navigator.clipboard.writeText(addr).then(() => {
-        btn.textContent = 'Copied!';
-        btn.classList.add('copied');
+    function copyToClipboard(text, btn) {
+      function finish(ok) {
+        btn.textContent = ok ? 'Copied!' : 'Failed';
+        if (ok) btn.classList.add('copied');
         setTimeout(() => {
           btn.textContent = 'Copy';
           btn.classList.remove('copied');
         }, 2000);
-      }).catch(() => {
-        btn.textContent = 'Failed';
-        setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
-      });
+      }
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => finish(true)).catch(() => fallback());
+      } else {
+        fallback();
+      }
+      function fallback() {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;top:-999px;left:-999px;opacity:0';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        finish(ok);
+      }
+    }
+
+    function copyEmail() {
+      copyToClipboard(
+        document.getElementById('email-addr').textContent.trim(),
+        document.getElementById('copy-email')
+      );
     }
 
     function copyWechatId() {
-      const id  = document.getElementById('wechat-id').textContent.trim();
-      const btn = document.getElementById('copy-wechat');
-      navigator.clipboard.writeText(id).then(() => {
-        btn.textContent = 'Copied!';
-        btn.classList.add('copied');
-        setTimeout(() => {
-          btn.textContent = 'Copy';
-          btn.classList.remove('copied');
-        }, 2000);
-      }).catch(() => {
-        btn.textContent = 'Failed';
-        setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
-      });
+      copyToClipboard(
+        document.getElementById('wechat-id').textContent.trim(),
+        document.getElementById('copy-wechat')
+      );
     }
   </script>
 
