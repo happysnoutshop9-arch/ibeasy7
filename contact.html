@@ -73,8 +73,11 @@
             </div>
             <h3>Email Us</h3>
             <p class="channel-desc">Best for detailed enquiries, sharing draft documents, or any questions about our services and pricing.</p>
-            <p style="font-size:0.88rem;color:var(--deep-blue);font-weight:600;">ab18100279846@outlook.com</p>
-            <a href="mailto:ab18100279846@outlook.com" class="channel-btn btn-email">Send an Email</a>
+            <div class="wechat-id-box" style="margin-bottom:0.75rem;">
+              <span class="wechat-id-text" id="email-addr">ab18100279846@outlook.com</span>
+              <button class="copy-btn" id="copy-email" onclick="copyEmail()" aria-label="Copy email address">Copy</button>
+            </div>
+            <a href="mailto:ab18100279846@outlook.com" class="channel-btn btn-email">Open Email App</a>
           </div>
 
           <!-- WhatsApp -->
@@ -265,6 +268,22 @@
         toggle.setAttribute('aria-expanded', 'false');
       });
     });
+
+    function copyEmail() {
+      const addr = document.getElementById('email-addr').textContent.trim();
+      const btn  = document.getElementById('copy-email');
+      navigator.clipboard.writeText(addr).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      }).catch(() => {
+        btn.textContent = 'Failed';
+        setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+      });
+    }
 
     function copyWechatId() {
       const id  = document.getElementById('wechat-id').textContent.trim();
