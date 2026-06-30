@@ -133,8 +133,12 @@
           <p class="section-sub">Fill in the form below and we'll get back to you within 24–48 hours.</p>
         </div>
 
+        <div id="form-success" class="form-success-banner" style="display:none;padding:1.1rem 1.5rem;background:#d4edda;border:1.5px solid #1D9E75;border-radius:10px;color:#155724;margin-bottom:1.5rem;font-weight:600;">
+          ✓ Message sent! We'll get back to you within 24–48 hours.
+        </div>
+
         <div class="contact-form-wrap">
-          <form class="contact-form" aria-label="Contact enquiry form" onsubmit="return false;">
+          <form class="contact-form" aria-label="Contact enquiry form" action="https://formsubmit.co/ab18100279846@outlook.com" method="POST">
 
             <div class="form-row">
               <div class="form-group">
@@ -189,8 +193,12 @@
               <textarea id="cf-message" name="message" placeholder="Briefly describe what you're working on and how we can help. The more detail, the better!"></textarea>
             </div>
 
+            <input type="hidden" name="_subject" value="New IB Easy 7 Enquiry" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://ibeasy7.com/contact.html?sent=1" />
+            <input type="hidden" name="_template" value="table" />
+
             <button type="submit" class="btn btn-primary form-submit">Send Enquiry</button>
-            <p class="form-note">Form submissions require backend setup — for now, please reach out directly via email or WhatsApp above while we get this connected.</p>
 
           </form>
         </div>
@@ -313,6 +321,14 @@
         document.getElementById('wechat-id').textContent.trim(),
         document.getElementById('copy-wechat')
       );
+    }
+
+    if (new URLSearchParams(window.location.search).get('sent') === '1') {
+      const el = document.getElementById('form-success');
+      if (el) {
+        el.style.display = 'block';
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     }
   </script>
 
